@@ -2,6 +2,8 @@
 
 API REST para administrar dueños y sus mascotas en una veterinaria. Un dueño puede tener varias mascotas; cada mascota pertenece a un dueño. Las reglas del dominio impiden registrar dos dueños con el mismo correo y eliminar a un dueño mientras tenga mascotas.
 
+Repositorio: <https://github.com/carodev02/Lab-12--DesAEA>
+
 ## Proyecto
 
 Abra `Lab12Chumbirayco/Lab12Chumbirayco.csproj` en Visual Studio 2026 y ejecute el proyecto `Lab 12-Chumbirayco`. Está dirigido a .NET 10 y usa controladores. Swagger UI se abre en `/swagger` y lleva una personalización visual morada clara.
@@ -58,11 +60,11 @@ Los modelos incluyen Data Annotations. La navegación `Pet.Owner` admite nulo pa
 - **API: Render Free Web Service con Dockerfile.** Render documenta despliegues Docker; el servicio gratuito se suspende tras 15 minutos sin tráfico y el primer arranque puede tardar aproximadamente un minuto.
 - **Base: Supabase Free PostgreSQL.** Incluye 500 MB y puede pausar proyectos con poca actividad en una semana. Es adecuado para esta demostración académica, con esas limitaciones.
 
-Cree un proyecto PostgreSQL en Supabase y ejecute `database/vetcare.sql` en su SQL Editor. En Connect, seleccione el pooler compartido en modo sesión y convierta sus parámetros a formato Npgsql (`Host=...;Port=5432;Database=postgres;Username=postgres.<project-ref>;Password=...;SSL Mode=Require`). El pooler compartido admite IPv4, útil para el servicio Render. Publique este repositorio como Web Service Docker en Render y configure esa cadena como `ConnectionStrings__VetCareDb` y el origen cliente como `Cors__AllowedOrigin` en Environment, sin guardarlos en Git. La API publicada expondrá `/swagger`. El usuario debe completar la autenticación de sus propias cuentas de proveedor y conectar el repositorio para obtener URL reales.
+Cree un proyecto PostgreSQL en Supabase y ejecute `database/vetcare.sql` en su SQL Editor. En Connect, seleccione el pooler compartido en modo sesión y convierta sus parámetros a formato Npgsql (`Host=...;Port=5432;Database=postgres;Username=postgres.<project-ref>;Password=...;SSL Mode=Require`). El pooler compartido admite IPv4, útil para el servicio Render. El código de este repositorio ya está publicado en GitHub. Para publicar la API, cree un Web Service Docker en Render conectado a este repositorio y configure la cadena como `ConnectionStrings__VetCareDb` y el origen cliente como `Cors__AllowedOrigin` en Environment, sin guardarlos en Git. La ruta de Swagger será `/swagger`.
 
 ## Verificación pendiente
 
-Las pruebas exigidas por el laboratorio deben ejecutarse contra la URL pública, incluyendo cada operación y los estados 200, 201, 204, 400, 404 y 409. Guarde capturas reales en `captures/` y registre los enlaces publicados aquí. Las capturas, URL de API, enlace de repositorio remoto y resultados no se incluyen hasta que exista un despliegue accesible.
+La solución compila en .NET 10. La verificación local confirmó Swagger UI y el CSS personalizado con HTTP 200, y OpenAPI expone las cinco rutas de colección/recurso para las once acciones. Las pruebas del laboratorio deben ejecutarse contra la URL pública para cada acción y los estados 200, 201, 204, 400, 404 y 409. El despliegue cloud, las capturas reales y los resultados remotos quedan pendientes de crear los servicios de Supabase y Render.
 
 ## Tema, observaciones y conclusiones
 
