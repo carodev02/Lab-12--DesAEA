@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: lab12-chumbirayco
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Lab12Chumbirayco/Dockerfile
+    dockerContext: ./Lab12Chumbirayco
+    healthCheckPath: /swagger
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ConnectionStrings__VetCareDb
+        sync: false
+      - key: Cors__AllowedOrigin
+        sync: false
