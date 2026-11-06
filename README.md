@@ -55,16 +55,16 @@ Todas las operaciones usan controladores, DbContext y consultas LINQ asíncronas
 
 Los modelos incluyen Data Annotations. La navegación `Pet.Owner` admite nulo para que el cliente envíe `ownerId`; `Owner.Pets` se excluye del JSON para evitar ciclos sin DTOs.
 
-## Publicación gratuita propuesta
+## Publicación gratuita
 
 - **API: Render Free Web Service con Dockerfile.** Render documenta despliegues Docker; el servicio gratuito se suspende tras 15 minutos sin tráfico y el primer arranque puede tardar aproximadamente un minuto.
 - **Base: Supabase Free PostgreSQL.** Incluye 500 MB y puede pausar proyectos con poca actividad en una semana. Es adecuado para esta demostración académica, con esas limitaciones.
 
-Cree un proyecto PostgreSQL en Supabase y ejecute `database/vetcare.sql` en su SQL Editor. En Connect, seleccione el pooler compartido en modo sesión y convierta sus parámetros a formato Npgsql (`Host=...;Port=5432;Database=postgres;Username=postgres.<project-ref>;Password=...;SSL Mode=Require`). El pooler compartido admite IPv4, útil para el servicio Render. El código de este repositorio ya está publicado en GitHub y `render.yaml` define el Web Service Docker gratuito. En Render, cree un Blueprint desde este repositorio; introduzca `ConnectionStrings__VetCareDb` como secreto usando la cadena del Session pooler, y `Cors__AllowedOrigin` con el origen HTTPS concreto de la API. No guarde credenciales en Git. La ruta de Swagger será `/swagger`.
+La base Supabase está configurada con `database/vetcare.sql`: contiene dos dueños y tres mascotas de ejemplo, y RLS está habilitado. La API está desplegada en Render Free mediante el Blueprint `render.yaml`. Swagger está publicado en <https://lab12-chumbirayco.onrender.com/swagger>. Las variables `ConnectionStrings__VetCareDb` y `Cors__AllowedOrigin` se guardan en el entorno de Render, no en Git. La cadena Npgsql usa el Session pooler de Supabase en IPv4 (`Host=...;Port=5432;Database=postgres;Username=postgres.<project-ref>;Password=...;SSL Mode=Require`).
 
-## Verificación pendiente
+## Verificación de publicación
 
-La solución compila en .NET 10. La verificación local confirmó Swagger UI y el CSS personalizado con HTTP 200, y OpenAPI expone las cinco rutas de colección/recurso para las once acciones. En Supabase se ejecutó el script incluido y se verificaron dos dueños, tres mascotas y RLS habilitado en ambas tablas. Quedan pendientes la creación del servicio Blueprint en Render, las pruebas de todos los endpoints y estados 200, 201, 204, 400, 404 y 409 sobre la API publicada, y las capturas reales.
+La solución compila en .NET 10. Swagger responde HTTP 200 en la API publicada. Se ejecutaron 29 verificaciones HTTP sobre Render: los CRUD de dueños y mascotas, los filtros, la ruta anidada, validaciones, los códigos 200, 201, 204, 400, 404 y 409, y las dos reglas de negocio. Todas devolvieron el estado esperado. Los registros de prueba se eliminaron; una lectura final confirmó que quedan los dos dueños y las tres mascotas de ejemplo. El detalle está en [docs/verificacion-publicacion.md](docs/verificacion-publicacion.md). La compilación presentó solo la advertencia NU1900 porque no pudo consultar el índice de auditoría de NuGet desde el entorno de desarrollo. Falta adjuntar una captura real de Swagger/API al expediente de entrega; la captura de Render confirma el servicio Live.
 
 ## Tema, observaciones y conclusiones
 
