@@ -1,0 +1,30 @@
+:root {
+  --primary: #7251a3;
+  --primary-dark: #56377f;
+  --lavender: #f1ebf8;
+  --lavender-soft: #faf8fc;
+  --ink: #282333;
+  --muted: #615a6d;
+  --line: #ded5e9;
+}
+body { background: var(--lavender-soft); color: var(--ink); }
+.swagger-ui { color: var(--ink); }
+.swagger-ui .topbar { background: var(--primary-dark); }
+.swagger-ui .info { margin: 30px 0 24px; }
+.swagger-ui .info .title { color: var(--primary-dark); }
+.swagger-ui .scheme-container { background: #fff; box-shadow: 0 1px 4px #40275a1c; }
+.swagger-ui .opblock-tag { color: var(--primary-dark); border-bottom-color: var(--line); }
+.swagger-ui .opblock { border-color: #c9b9dc; box-shadow: 0 2px 7px #40275a12; }
+.swagger-ui .opblock .opblock-summary { border-color: var(--line); }
+.swagger-ui .opblock.opblock-get .opblock-summary-method { background: #527a69; }
+.swagger-ui .opblock.opblock-post .opblock-summary-method { background: #7251a3; }
+.swagger-ui .opblock.opblock-put .opblock-summary-method { background: #8962a8; }
+.swagger-ui .opblock.opblock-delete .opblock-summary-method { background: #a34f65; }
+.swagger-ui .btn.authorize { color: var(--primary-dark); border-color: var(--primary); }
+.swagger-ui .btn.execute { background: var(--primary); border-color: var(--primary); }
+.swagger-ui input, .swagger-ui select, .swagger-ui textarea { border-color: #b7a8c9; color: var(--ink); }
+.swagger-ui .model-box, .swagger-ui section.models { background: #f7f3fb; }
+.swagger-ui .opblock .opblock-section-header { background: var(--lavender); }
+.swagger-ui .response-col_status { color: var(--primary-dark); }
+.swagger-ui a { color: var(--primary-dark); }
+@media (max-width: 640px) { .swagger-ui .wrapper { padding: 0 14px; } }
