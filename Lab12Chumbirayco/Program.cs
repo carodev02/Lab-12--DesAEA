@@ -22,7 +22,8 @@ app.UseSwaggerUI(options =>
     options.DocumentTitle = "Lab 12-Chumbirayco | VetCare API";
 });
 app.UseStaticFiles();
-app.UseHttpsRedirection();
+if (app.Environment.IsDevelopment())
+    app.UseHttpsRedirection();
 app.UseCors("ApiClient");
 app.MapControllers();
 app.Run();
