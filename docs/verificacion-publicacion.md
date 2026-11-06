@@ -3,7 +3,7 @@
 - Fecha: 2026-11-05 (hora de Perú)
 - API: <https://lab12-chumbirayco.onrender.com>
 - Swagger UI: <https://lab12-chumbirayco.onrender.com/swagger>
-- Resultado: 29 de 29 comprobaciones recibieron el código esperado.
+- Resultado: 30 de 30 comprobaciones recibieron el código esperado.
 
 | # | Solicitud | Esperado | Obtenido |
 |---:|---|---:|---:|
@@ -36,5 +36,6 @@
 | 27 | `DELETE /api/pets/2147483646` | 404 | 404 |
 | 28 | `DELETE /api/owners/{id}` sin mascotas | 204 | 204 |
 | 29 | `DELETE /api/owners/2147483646` | 404 | 404 |
+| 30 | `OPTIONS /api/owners` desde el origen HTTPS de Render | 204 | 204, con `Access-Control-Allow-Origin` coincidente |
 
-Los registros usados para los casos de creación/actualización/eliminación fueron temporales y se limpiaron al terminar. La lectura final de la API devolvió únicamente los dos dueños y las tres mascotas de ejemplo. La captura de Render compartida por la usuaria muestra el Web Service en estado **Live**. No se presenta una captura de pantalla de Swagger como si hubiera sido tomada; debe añadirse al expediente visual de entrega.
+Los registros usados para los casos de creación/actualización/eliminación fueron temporales y se limpiaron al terminar. La lectura final de la API devolvió únicamente los dos dueños y las tres mascotas de ejemplo. La captura de Render compartida por la usuaria muestra el Web Service en estado **Live**. No se presenta una captura de pantalla de Swagger como si hubiera sido tomada; debe añadirse al expediente visual de entrega. El Scaffold Database First aún debe ejecutarse desde Visual Studio contra la base PostgreSQL existente.
